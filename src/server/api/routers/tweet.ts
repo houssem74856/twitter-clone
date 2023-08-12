@@ -2,12 +2,8 @@ import { Prisma } from "@prisma/client";
 import { inferAsyncReturnType } from "@trpc/server";
 import { z } from "zod";
 
-import {
-  createTRPCRouter,
-  publicProcedure,
-  protectedProcedure,
-  createTRPCContext,
-} from "~/server/api/trpc";
+import { createTRPCRouter } from "~/server/api/trpc";
+import {publicProcedure, protectedProcedure, createTRPCContext} from "~/server/api/trpc";
 
 export const tweetRouter = createTRPCRouter({
   infiniteProfileFeed: publicProcedure
