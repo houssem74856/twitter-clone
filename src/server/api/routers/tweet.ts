@@ -52,12 +52,12 @@ export const tweetRouter = createTRPCRouter({
     .input(z.object({ content: z.string() }))
     .mutation(async ({ input: { content }, ctx}) => {
       const tweet = await ctx.prisma.tweet.create({
-        data : {
+        data: {
           content,
           userId: ctx.session.user.id
         }
       })
-
+      
       void ctx.revalidateSSG?.(`/profiles/${ctx.session.user.id}`);
 
       return tweet;
@@ -128,7 +128,7 @@ async function getInfiniteTweets({
         createdAt: tweet.createdAt,
         likeCount: tweet._count.likes,
         user: tweet.user,
-        likedByMe: tweet.likes?.length > 0,
+        likedByMe: tweet.likes?.length === 1,
       };
     }),
     nextCursor,

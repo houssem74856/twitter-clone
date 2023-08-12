@@ -7,7 +7,7 @@ import { IconHoverEffect } from "./IconHoverEffect"
 import { api } from "~/utils/api"
 import { LoadingSpinner } from "./LoadingSpinner"
 
-type Tweet = {
+interface Tweet {
   id: string
   content: string
   createdAt: Date
@@ -20,7 +20,7 @@ type Tweet = {
   }
 }
 
-type InfiniteTweetListProps = {
+interface InfiniteTweetListProps {
   isLoading: boolean
   isError: boolean
   hasMore: boolean | undefined
@@ -132,7 +132,7 @@ function TweetCard({ id, user, content, createdAt, likeCount, likedByMe }: Tweet
   )
 }
 
-type HeartButtonProps = {
+interface HeartButtonProps {
   onClick: () => void;
   isLoading: boolean;
   likedByMe: boolean;
